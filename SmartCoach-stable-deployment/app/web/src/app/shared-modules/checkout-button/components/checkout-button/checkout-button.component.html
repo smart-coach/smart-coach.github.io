@@ -1,0 +1,14 @@
+<smart-coach-spinner-wheel *ngIf="loadingPortal" [spinnerMessage]="this.spinnerMessage">
+</smart-coach-spinner-wheel>
+<button mat-raised-button class="editButton buttonGroupButton checkout-button"
+  [disabled]="disableCheckoutButton()" type="button" *ngIf="!loadingPortal" (click)="setPortalFunction()">
+  <div class='buttonFlexManager glowingButton' fxLayout="row">
+    <div class='buttonIconWrapper'>
+      <mat-icon>
+        arrow_circle_up</mat-icon>
+    </div>
+    <div class='buttonTextWrapper'>
+      &nbsp; GO PREMIUM
+    </div>
+  </div>
+</button>

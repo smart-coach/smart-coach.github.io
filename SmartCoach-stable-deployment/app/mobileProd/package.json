@@ -1,0 +1,105 @@
+{
+  "name": "com.smartcoach.app",
+  "displayName": "SmartCoach™ AI Nutrition Coach",
+  "version": "1.0.0",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "iosIcons": "cordova-res ios --type icon",
+    "buildReleaseApk": "cordova build android --release -- --keystore=\"./android-release.keystore.jks\" --alias=\"release\" --storePassword=\"swellowNormalFlying\" --password=\"swellowNormalFlying\"",
+    "runReleaseApk": "cordova run android --release -- --keystore=\"./android-release.keystore.jks\" --alias=\"release\" --storePassword=\"swellowNormalFlying\" --password=\"swellowNormalFlying\""
+  },
+  "dependencies": {
+    "cordova": "^10.0.0",
+    "cordova-plugin-device": "^2.1.0",
+    "cordova-plugin-fbsdk": "4.0.2",
+    "cordova-res": "^0.15.4",
+    "jetifier": "^2.0.0"
+  },
+  "devDependencies": {
+    "@ahovakimyan/cordova-plugin-wkwebviewxhrfix": "^1.0.1",
+    "cordova-android": "^10.1.2",
+    "cordova-ios": "^6.2.0",
+    "cordova-plugin-advanced-http": "^3.3.1",
+    "cordova-plugin-app-review": "^2.1.4",
+    "cordova-plugin-badge-fix": "^0.8.10",
+    "cordova-plugin-file": "^7.0.0",
+    "cordova-plugin-firebase-analytics": "^6.1.0",
+    "cordova-plugin-firebase-messaging": "^6.1.2",
+    "cordova-plugin-health": "^2.0.5",
+    "cordova-plugin-inappbrowser": "^5.0.0",
+    "cordova-plugin-keyboard": "^1.2.0",
+    "cordova-plugin-local-notification-12": "github:bhandaribhumin/cordova-plugin-local-notification-12",
+    "cordova-plugin-network-information": "^3.0.0",
+    "cordova-plugin-proguard": "^2.2.0",
+    "cordova-plugin-purchase": "^11.0.0",
+    "cordova-plugin-screen-orientation": "^3.0.2",
+    "cordova-plugin-splashscreen": "^6.0.2",
+    "cordova-plugin-statusbar": "^3.0.0",
+    "cordova-support-android-plugin": "~1.0.0",
+    "es6-promise-plugin": "^4.2.2"
+  },
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-screen-orientation": {},
+      "cordova-plugin-network-information": {},
+      "cordova-plugin-keyboard": {},
+      "cordova-plugin-inappbrowser": {},
+      "cordova-plugin-purchase": {
+        "BILLING_KEY": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwyzjESP8wnp6HmxqQtIcEOkIYqVW8cKZop2LctIBudidaO5umSUTGF0tRFuiX17PAsjuW7cer79V7Ttx9xFDe+4oAJkhHgZlB5B2Y8KK9y+nZ/6VzeFCfZr+BXWpC/KAG9d38HHPuvz35RYmrGH8lZNQHOZQjO5H2MGXQ3WYpNySQhPtkAe670LKzj0bkPomxQCxtjJ6v+MSn0jvNdd00XKcku9wXThPvX+jOEjNO6CI/Gk0Ew8VH7fhdUHgGMMArasuVaFtOT6mGGATliVWMdWW/3dCLMCgfDeS+Bsa8H/Jad+/ky+ovR8OFaiKapDQA8UbCondqvBAL5wwR3oEhwIDAQAB"
+      },
+      "cordova-plugin-splashscreen": {},
+      "@ahovakimyan/cordova-plugin-wkwebviewxhrfix": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-app-review": {
+        "ANDROID_PLAY_REVIEW_VERSION": "2.0.+"
+      },
+      "cordova-plugin-proguard": {},
+      "cordova-plugin-firebase-analytics": {
+        "ANALYTICS_COLLECTION_ENABLED": "true",
+        "AUTOMATIC_SCREEN_REPORTING_ENABLED": "true",
+        "IOS_FIREBASE_POD_VERSION": "~> 8.8.0",
+        "ANDROID_FIREBASE_ANALYTICS_VERSION": "19.0.+"
+      },
+      "cordova-plugin-firebase-messaging": {
+        "ANDROID_FIREBASE_MESSAGING_VERSION": "22.0.+",
+        "ANDROIDX_CORE_VERSION": "1.6.+",
+        "IOS_FIREBASE_POD_VERSION": "~> 8.8.0"
+      },
+      "cordova-plugin-advanced-http": {
+        "ANDROIDBLACKLISTSECURESOCKETPROTOCOLS": "SSLv3,TLSv1"
+      },
+      "cordova-plugin-local-notification-12": {
+        "ANDROID_SUPPORT_V4_VERSION": "26.+",
+        "ANDROIDX_VERSION": "1.2.0",
+        "ANDROIDX_APPCOMPAT_VERSION": "1.3.1"
+      },
+      "cordova-plugin-fbsdk": {
+        "APP_ID": "522878869361234",
+        "APP_NAME": "SmartCoach",
+        "CLIENT_TOKEN": "b53339e6541c0ae913fcaa967e0debde",
+        "FACEBOOK_URL_SCHEME_SUFFIX": " ",
+        "OTHER_APP_SCHEMES": " ",
+        "FACEBOOK_AUTO_LOG_APP_EVENTS": "true",
+        "FACEBOOK_HYBRID_APP_EVENTS": "false",
+        "FACEBOOK_ADVERTISER_ID_COLLECTION": "true",
+        "FACEBOOK_ANDROID_SDK_VERSION": "14.1.1",
+        "FACEBOOK_IOS_SDK_VERSION": "14.1.0",
+        "FACEBOOK_BROWSER_SDK_VERSION": "v14.0"
+      },
+      "cordova-plugin-health": {
+        "FIT_API_VERSION": "20.0.0",
+        "PLAY_AUTH_VERSION": "19.0.0",
+        "HEALTH_READ_PERMISSION": "App needs read access to nutrition and body weight information to sync user data for nutrition suggestion algorithm.",
+        "HEALTH_WRITE_PERMISSION": "App needs write access to nutrition and body weight information to sync user data for nutrition suggestion algorithm."
+      }
+    }
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "Apache Cordova Team",
+  "license": "Apache-2.0"
+}

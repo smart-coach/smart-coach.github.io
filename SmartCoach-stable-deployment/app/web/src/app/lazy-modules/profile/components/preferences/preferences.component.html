@@ -1,0 +1,249 @@
+<div class="wrapper">
+
+  <!--------------------------------GENERAL PREFERENCES ------------------------------------->
+
+  <mat-card class='generalPreferencesCard'>
+    <mat-card-content>
+      <div class="display">
+        <h1> General
+          <mat-icon class="scThemeText" style="float:right;">view_module</mat-icon>
+        </h1>
+        <mat-divider></mat-divider>
+        <!----------------------------FORM------------------------------------->
+        <div class="preferencetableWrapper" [ngClass]="{'editSelects' : disableGeneralPrefFormControls()}">
+          <form [formGroup]="generalPreferencesForm">
+            <table class="preferenceTable">
+              <tr>
+                <td class='scThemeText preferenceHeader'>Units</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_NUMBER_SYSTEM"
+                      [disableControl]="disableGeneralPrefFormControls()" style="text-align:center">
+                      <mat-option *ngFor="let numSystem of prefs.getNumberSystemFormControls()"
+                        [value]="numSystem.value">
+                        {{numSystem.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <tr>
+                <td class='scThemeText preferenceHeader'>Theme</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_THEME" class="scThemeText"
+                      [disableControl]="disableGeneralPrefFormControls()" style="text-align:center">
+                      <mat-option
+                        *ngFor="let themeColor of prefs.getThemeColorFormControls(permissions.userHasGoldAccount())"
+                        [value]="themeColor.value">
+                        <div [style.color]="themeColor.value">
+                          {{themeColor.displayName}}
+                        </div>
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <tr *ngIf="permissions.userHasSubscription()">
+                <td class='scThemeText preferenceHeader'>Email Reports</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_SEND_EMAIL" class="scThemeText"
+                      [disableControl]="disableGeneralPrefFormControls()" style="text-align:center">
+                      <mat-option *ngFor="let emailOption of prefs.getEmailStatusFormControls()"
+                        [value]="emailOption.value">
+                        {{emailOption.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+
+            <div class="buttonGroup" *ngIf="!showGeneralSpinner">
+              <button mat-raised-button [disabled]="disableEditGeneralPrefFormButton()"
+                *ngIf="showEditGeneralPrefFormButton()" class="editButton buttonGroupButton"
+                (click)="toggleEditGeneralPreferences()">
+                <div class='buttonFlexManager' fxLayout="row">
+                  <div class='buttonIconWrapper'>
+                    <mat-icon>
+                      edit</mat-icon>
+                  </div>
+                  <div class='buttonTextWrapper'>
+                    &nbsp; EDIT PREFERENCES
+                  </div>
+                </div>
+              </button>
+
+              <div *ngIf="generalPreferencesBeingEdited()">
+                <button type="submit" mat-raised-button class="submit buttonGroupButton" (click)="updatePreferences()"
+                  [ngClass]=" { 'greenButton' : generalPreferencesForm.valid , 'disabledButton' : !generalPreferencesForm.valid }">
+                  <div class='buttonFlexManager' fxLayout="row">
+                    <div class='buttonIconWrapper'>
+                      <mat-icon>done_outline</mat-icon>
+                    </div>
+                    <div class='buttonTextWrapper'>
+                      &nbsp; CONFIRM
+                    </div>
+                  </div>
+                </button>
+
+                <button mat-raised-button *ngIf="generalPreferencesBeingEdited()"
+                  class="cancel greyButton buttonGroupButton" (click)="toggleEditGeneralPreferences()">
+                  <div class='buttonFlexManager' fxLayout="row">
+                    <div class='buttonIconWrapper'>
+                      <mat-icon> cancel_presentation</mat-icon>
+                    </div>
+                    <div class='buttonTextWrapper'>
+                      &nbsp; CLOSE
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+  <!--------------------------------NUTRITION PREFERENCES ------------------------------------->
+
+
+  <mat-card class='nutritionPreferencesCard' [ngClass]="{'editSelects' : disableNutritionPrefFormControls()}">
+    <mat-card-content>
+      <div class="display">
+        <h1> Nutrition
+          <mat-icon class="scThemeText" style="float:right;">restaurant</mat-icon>
+        </h1>
+        <mat-divider></mat-divider>
+        <!----------------------------FORM------------------------------------->
+        <div class="preferencetableWrapper">
+          <form [formGroup]="nutritionPreferencesForm">
+            <table class="preferenceTable">
+              <tr>
+                <td class='scThemeText preferenceHeader'>Sort Mode</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_SORT_MODE"
+                      [disableControl]="disableNutritionPrefFormControls()" style="text-align:center">
+                      <mat-option *ngFor="let sortMode of prefs.getSortModeFormControls()" [value]="sortMode.value">
+                        {{sortMode.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <tr>
+                <td class='scThemeText preferenceHeader'>Order Mode</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_ODER_MODE"
+                      [disableControl]="disableNutritionPrefFormControls()" style="text-align:center">
+                      <mat-option *ngFor="let orderMode of prefs.getOrderModeFormControls()" [value]="orderMode.value">
+                        {{orderMode.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <tr>
+                <td class='scThemeText preferenceHeader'>Graph Mode</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_GRAPH_MODE" class="scThemeText"
+                      [disableControl]="disableNutritionPrefFormControls()" style="text-align:center">
+                      <mat-option *ngFor="let graphMode of prefs.getGraphModeFormControls()" [value]="graphMode.value">
+                        {{graphMode.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <tr>
+                <td class='scThemeText preferenceHeader'>Surplus</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_SURPLUS_SIZE" class="scThemeText"
+                      [disableControl]="disableNutritionPrefFormControls()" style="text-align:center">
+                      <mat-option *ngFor="let surplusMode of prefs.getSurplusFormControls()"
+                        [value]="surplusMode.value">
+                        {{surplusMode.displayName}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+
+              <tr>
+                <td class='scThemeText preferenceHeader'>Deficit</td>
+                <td>
+                  <mat-form-field class='hideUnderLineWhenDisabled noPaddingFormField'>
+                    <mat-select [formControlName]="FORM_CONTROL_DEFICIT_SIZE" class="scThemeText"
+                      [disableControl]="disableNutritionPrefFormControls()" style="text-align:center">
+                      <mat-option value="conservative"> Conservative
+                      </mat-option>
+                      <mat-option value="moderate"> Moderate
+                      </mat-option>
+                      <mat-option value="aggressive">Aggressive
+                      </mat-option>
+                      <mat-option value="veryAggressive">Very Aggressive
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </td>
+              </tr>
+            </table>
+
+            <div class="buttonGroup" *ngIf="!showNutrSpinner">
+              <button mat-raised-button [disabled]="disableEditNutrPrefFormButton()"
+                *ngIf="showEditNutrPrefFormButton()" class="editButton buttonGroupButton"
+                (click)="toggleEditNutritionPreferences()">
+                <div class='buttonFlexManager' fxLayout="row">
+                  <div class='buttonIconWrapper'>
+                    <mat-icon>edit</mat-icon>
+                  </div>
+                  <div class='buttonTextWrapper'>
+                    EDIT PREFERENCES &nbsp;
+                  </div>
+                </div>
+              </button>
+
+              <div *ngIf="nutritionPreferencesBeingEdited()">
+                <button (click)="updatePreferences()" mat-raised-button class="submit buttonGroupButton"
+                  [ngClass]=" { 'greenButton' : nutritionPreferencesForm.valid , 'disabledButton' : !nutritionPreferencesForm.valid }">
+                  <div class='buttonFlexManager' fxLayout="row">
+                    <div class='buttonIconWrapper'>
+                      <mat-icon>done_outline</mat-icon>
+                    </div>
+                    <div class='buttonTextWrapper'>
+                      &nbsp; CONFIRM
+                    </div>
+                  </div>
+                </button>
+
+                <button mat-raised-button *ngIf="nutritionPreferencesBeingEdited()"
+                  class="cancel greyButton buttonGroupButton" (click)="toggleEditNutritionPreferences()">
+                  <div class='buttonFlexManager' fxLayout="row">
+                    <div class='buttonIconWrapper'>
+                      <mat-icon>cancel_presentation</mat-icon>
+                    </div>
+                    <div class='buttonTextWrapper'>
+                      &nbsp; CLOSE
+                    </div>
+                  </div>
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,0 +1,179 @@
+<div id="shepherdStepTen" class="bigWrapper">
+  <smart-coach-spinner-wheel *ngIf='showStatsSpinner' [noMessage]=true></smart-coach-spinner-wheel>
+  <div id="shepherdStepEleven" class="titleControlsOverview" *ngIf='!showStatsSpinner '>
+    <h4>
+      <div class='headerFlexManager'>
+        <button *ngIf='showGraphAndVarsButtons()' class="settings scHoverText" mat-button [matMenuTriggerFor]="menu">
+          <mat-icon>view_carousel
+          </mat-icon>
+        </button>
+        <button class="settings scHoverText" (click)='settingsClick()' mat-button>
+          <mat-icon>settings</mat-icon>
+        </button>
+        <button *ngIf="this.environmentService.isWeb" class="settings scHoverText"
+          (click)='this.exporter.exportNutrLogToCSV(this.logBeingObserved)' mat-button>
+          <mat-icon>file_download</mat-icon>
+        </button>
+        <div class="logTitle">
+          {{logBeingObserved.title}}
+        </div>
+      </div>
+      <mat-menu #menu="matMenu" width="100%">
+        <button mat-menu-item class="matMenuButton" *ngIf='showGraphAndVarsButtons()'>
+          <div *ngIf='!showGraph()' (click)="userShowGraph = true">
+            <mat-icon>insert_chart</mat-icon> SHOW GRAPH
+          </div>
+          <div *ngIf='showGraph()' (click)="userShowGraph = false">
+            <mat-icon>insert_chart</mat-icon> HIDE GRAPH
+          </div>
+        </button>
+        <button mat-menu-item class="matMenuButton" *ngIf='showGraphAndVarsButtons()'>
+          <div *ngIf='!showVars()' (click)="userShowVars = true">
+            <mat-icon>bubble_chart</mat-icon> SHOW VARIABLES
+          </div>
+          <div *ngIf='showVars()' (click)="userShowVars = false">
+            <mat-icon>bubble_chart</mat-icon> HIDE VARIABLES
+          </div>
+        </button>
+      </mat-menu>
+    </h4>
+
+    <div class="openAnalysis" (click)="openAnalysis()">
+      <table class="testTable">
+        <tr id="shepherdStepTwelve">
+          <th class="scThemeText">
+            <div class="inDepthTableContent">START WEIGHT</div>
+          </th>
+          <td>{{ payload?.startWeight | WeightPipe }} </td>
+          <th class="scThemeText">
+            <div class="inDepthTableContent">CURRENT WEIGHT</div>
+          </th>
+          <td>{{ payload?.currentWeight | WeightPipe}}</td>
+        </tr>
+        <tr id="shepherdStepThirteen">
+          <th class="scThemeText">
+            <div class="inDepthTableContent">FIRST ENTRY</div>
+          </th>
+          <td>
+            <span *ngIf="payload?.startDate ">{{ payload?.startDate | date: 'dd/MM/yy'}}</span>
+            <span *ngIf="!(payload?.startDate)">-</span>
+          </td>
+          <th class="scThemeText">
+            <div class="inDepthTableContent">LATEST ENTRY</div>
+          </th>
+          <td>
+            <span *ngIf="payload?.latestDate">{{ payload?.latestDate | date: 'dd/MM/yy'}}</span>
+            <span *ngIf="!(payload?.latestDate)">-</span>
+          </td>
+        </tr>
+        <tr id="shepherdStepFourteen">
+          <th class="scThemeText">
+            <div class="inDepthTableContent">TDEE</div>
+          </th>
+          <td>{{payload.estimatedTDEE | CaloriePipe}} </td>
+          <th class="scThemeText">
+            <div class="inDepthTableContent">LOG LENGTH</div>
+          </th>
+          <td>
+            <span *ngIf="(logBeingObserved.dayEntries.length) > 0">{{logBeingObserved.dayEntries.length}} Entries</span>
+            <span *ngIf="(logBeingObserved.dayEntries.length) <= 0">-</span>
+          </td>
+        </tr>
+        <tr id="shepherdStepFifteen">
+          <th class="scThemeText">
+            <div class="inDepthTableContent">LOG GOAL</div>
+          </th>
+          <td colspan="3">{{constants.getDisplayForGoal( logBeingObserved.goal )}}</td>
+        </tr>
+        <tr id="shepherdStepSixteen">
+          <th class="scThemeText">
+            <div class="inDepthTableContent">RATE OF GAIN/LOSS</div>
+          </th>
+          <td colspan="3" *ngIf="showInDepthStats()">
+            <div>{{checkForInsufficientData(payload?.gainLossRate)}}</div>
+          </td>
+          <td rowspan="2" colspan="3" *ngIf="!showInDepthStats()" class="scHoverText unlock">
+            <mat-icon class="lock">lock</mat-icon>
+            <div class="lockMessage">Unlock With Premium</div>
+          </td>
+        </tr>
+        <tr id="shepherdStepSeventeen">
+          <th class="scThemeText">
+            <div class="inDepthTableContent">GOAL INTAKE</div>
+          </th>
+          <td colspan="3" *ngIf="showInDepthStats()">
+            {{checkForInsufficientData(payload?.goalIntakeRange)}}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div  id="shepherdStepEighteen" class='graphContainer' *ngIf='showGraph()'>
+    <app-graph-widget [displayLogObservable]="displayLogObservable"></app-graph-widget>
+  </div>
+
+  <div class="variables" *ngIf=' showVars() '>
+    <smart-coach-spinner-wheel *ngIf='showVariablesSpinner' [noMessage]=true></smart-coach-spinner-wheel>
+    <table *ngIf="!showVariablesSpinner">
+      <col width="25%" />
+      <col width="25%" />
+      <col width="25%" />
+      <col width="25%" />
+      <tr>
+        <th class="var scBackgroundColor">VAR</th>
+        <th class="var scBackgroundColor">MIN</th>
+        <th class="var scBackgroundColor">MAX</th>
+        <th class="var scBackgroundColor">AVG</th>
+      </tr>
+      <tr>
+        <td>
+          <div class="varCellContent scThemeText thick">
+            WEIGHT
+          </div>
+        </td>
+        <td *ngIf=" showInDepthStats()">
+          <div class="varCellContent">
+            {{ payload?.minWeight | WeightPipe}}
+          </div>
+        </td>
+        <td *ngIf=" showInDepthStats()">
+          <div class="varCellContent">
+            {{ payload?.maxWeight | WeightPipe}}
+          </div>
+        </td>
+        <td *ngIf=" showInDepthStats()">
+          <div class="varCellContent">
+            {{ payload?.avgWeight | WeightPipe}}
+          </div>
+        </td>
+        <td rowspan="2" colspan="3" *ngIf="!showInDepthStats()" class="scHoverText unlock"
+          (click)="dialog.openAppropritateAccountDialog()">
+          <mat-icon class="lock">lock</mat-icon>
+          <div class="lockMessage">Unlock With Premium</div>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div class="varCellContent scThemeText thick">
+            KCAL
+          </div>
+        </td>
+        <td *ngIf=" showInDepthStats()">
+          <div class="varCellContent">
+            {{payload?.minCalories | CaloriePipe}}
+          </div>
+        </td>
+        <td *ngIf=" showInDepthStats()">
+          <div class="varCellContent">
+            {{ payload?.maxCalories | CaloriePipe }}
+          </div>
+        </td>
+        <td *ngIf=" showInDepthStats()">
+          <div class="varCellContent">
+            {{ payload?.avgCalories | CaloriePipe }}
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

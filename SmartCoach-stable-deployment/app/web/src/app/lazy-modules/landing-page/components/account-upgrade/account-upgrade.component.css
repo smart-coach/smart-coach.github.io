@@ -1,0 +1,125 @@
+.mainContent {
+  text-align: center;
+  font-size: large;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
+  margin-bottom: 50px;
+  max-width: 1000px;
+}
+
+.wrapper {
+  padding-bottom: 50px;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.algDescription {
+  text-align: left;
+  margin-top: 2.5%;
+  font-size: medium;
+}
+
+.algEmail:hover {
+  cursor: pointer;
+}
+
+.emailWrapper {
+  margin-top: 10px;
+}
+
+.valueProp {
+  margin-top: 10px;
+  min-width: 300px;
+  padding-left: 5px;
+  padding-right: 5px;
+  width: 30%;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  flex-grow: 1;
+  margin-bottom: 20px;
+}
+
+.valPropCard {
+  height: 100%;
+  padding: 5px;
+  border-color: #c0c0c0;
+}
+
+.icon {
+  border-style: solid;
+  border-width: 2px;
+  width: 100%;
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("/assets/header.png");
+  background-color: grey;
+  border: none;
+}
+
+.description {
+  font-size: medium;
+}
+
+.iconImage {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 120px;
+}
+
+.valuePropWrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.header {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sendToFront {
+  position: relative;
+  z-index: 25;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 100px;
+}
+
+.whiteText {
+  color: white;
+  width: 100%;
+  text-align: center;
+}
+
+.header {
+  margin-top: 25px;
+}
+
+.navButton {
+  height: 100%;
+}
+
+.mat-card-content {
+  padding-top: 5px;
+}
+
+.goToDashButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+}

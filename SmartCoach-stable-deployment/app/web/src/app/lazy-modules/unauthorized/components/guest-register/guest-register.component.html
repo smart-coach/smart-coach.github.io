@@ -1,0 +1,210 @@
+<form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+    <div fxLayout="row" fxLayoutAlign="center center" class="register-main">
+        <mat-card class='mainContent'>
+            <mat-card-header class='noMarginHeaderText'>
+                <mat-card-title>
+                    <h1>
+                        <mat-icon class='scThemeText'>supervisor_account</mat-icon>&nbsp;Guest Sign-In
+                    </h1>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <div class="demoMessage">
+                The only information required to register is your Username.
+                The demographic information you provide is optional, but in order for our machine learning algorithm to
+                predict your calorie needs, please fill out all of it otherwise it will take our algorithm 14 days to
+                learn about your energy requirements.
+            </div>
+            <div class="demoMessage boldDemoMessage scThemeText">
+                Please note that this account is TEMPORARY and you WILL LOSE ALL YOUR DATA if
+                you uninstall the app or log out.
+            </div>
+            <mat-card-content fxLayout="column">
+                <!---------------------------- Username --------------------------->
+                <div class="saveSpace">
+                    <div class="formFieldWrapper">
+                        <mat-form-field>
+                            <div class="scThemeText formFieldHeader">Username</div>
+                            <input class="inputWidth" type="text" autocomplete="new-username"
+                                [formControlName]="FORM_CONTROL_USERNAME" matInput maxlength="25">
+                            <mat-icon style="float: right; color: #c0c0c0;">perm_identity</mat-icon>
+                            <mat-error>
+                                * username required less than 25 characters
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <mat-form-field>
+                            <div class="scThemeText formFieldHeader" style="padding-bottom:2%;">How Did You Hear About
+                                Us?</div>
+                            <input class="inputWidth" type="text" maxlength="140" matInput
+                                [formControlName]="FORM_CONTROL_HEARD_ABOUT">
+                            <mat-icon style="float: right; color: #c0c0c0;">hearing</mat-icon>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!---------------------------- Number system and activity level --------------------------->
+                <div class="saveSpace">
+                    <div class="formFieldWrapper">
+                        <mat-form-field>
+                            <div class="scThemeText formFieldHeader forceAlignSelectHeadersVertically">Number System
+                            </div>
+                            <mat-select [formControlName]="FORM_CONTROL_NUMBER_SYSTEM">
+                                <mat-option *ngFor="let numSystem of prefs.getNumberSystemFormControls()"
+                                    [value]="numSystem.value">
+                                    {{numSystem.displayName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <mat-form-field class='hideUnderLineWhenDisabled'>
+                            <div class="scThemeText formFieldHeader forceAlignSelectHeadersVertically">Activity Level
+                            </div>
+                            <mat-select [formControlName]="FORM_CONTROL_ACTIVITY_LEVEL">
+                                <mat-option *ngFor="let activityLevel of prof.getActivtiyLevelFormControls()"
+                                    [value]="activityLevel.value">
+                                    {{activityLevel.displayName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!---------------------------- Height & Weight --------------------------->
+                <div class="saveSpace">
+                    <div class="formFieldWrapper">
+                        <div class="scThemeText formFieldHeader imperialHeader" *ngIf="this.isImperial()">
+                            Height
+                        </div>
+                        <mat-form-field class="feet" *ngIf="this.isImperial()">
+                            <input class="imperialInputWidth" type="number" [formControlName]="FORM_CONTROL_HEIGHT_FEET"
+                                matInput inputMode="numeric">
+                            <mat-placeholder>Feet</mat-placeholder>
+                            <mat-icon style="float: right; color: #c0c0c0;">height</mat-icon>
+                            <mat-error>
+                                * 9 or less
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="inches" *ngIf="this.isImperial()">
+                            <input class="imperialInputWidth" type="number"
+                                [formControlName]="FORM_CONTROL_HEIGHT_INCHES" matInput inputMode="numeric">
+                            <mat-placeholder>Inches</mat-placeholder>
+                            <mat-icon style="float: right; color: #c0c0c0;">height</mat-icon>
+                            <mat-error>
+                                * 11 or less
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field *ngIf="!this.isImperial()">
+                            <div class="scThemeText formFieldHeader">
+                                Height(cm)
+                            </div>
+                            <input class="inputWidth" type="number" [formControlName]="FORM_CONTROL_HEIGHT_CM" matInput
+                                inputMode="numeric">
+                            <mat-icon style="float: right; color: #c0c0c0;">height</mat-icon>
+                            <mat-error>
+                                * invalid height
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <mat-form-field *ngIf='this.isImperial()'>
+                            <div class="scThemeText formFieldHeader">Weight(lbs)</div>
+                            <input class="inputWidth" type="number" [formControlName]="FORM_CONTROL_WEIGHT_LB" matInput
+                                inputMode="decimal">
+                            <mat-icon style="float: right; color: #c0c0c0;">monitor_weight</mat-icon>
+                            <mat-error>
+                                * invalid weight
+                            </mat-error>
+                        </mat-form-field>
+                        <mat-form-field *ngIf="!this.isImperial()">
+                            <div class="scThemeText formFieldHeader">Weight(kg)</div>
+                            <input class="inputWidth" type="number" [formControlName]="FORM_CONTROL_WEIGHT_KG" matInput
+                                inputMode="decimal">
+                            <mat-icon style="float: right; color: #c0c0c0;">monitor_weight</mat-icon>
+                            <mat-error>
+                                * invalid weight
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <!---------------------------- Age & Gender --------------------------->
+                <div class="saveSpace">
+                    <div class="formFieldWrapper">
+                        <mat-form-field>
+                            <div class="scThemeText formFieldHeader">Age</div>
+                            <input class="inputWidth" type="number" [formControlName]="FORM_CONTROL_AGE" matInput
+                                inputMode="numeric">
+                            <mat-icon style="float: right; color: #c0c0c0;"></mat-icon>
+                            <mat-error>
+                                * invalid age
+                            </mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="formFieldWrapper">
+                        <mat-form-field class='hideUnderLineWhenDisabled'>
+                            <div class="scThemeText formFieldHeader forceAlignSelectHeadersVertically">Gender</div>
+                            <mat-select [formControlName]="FORM_CONTROL_GENDER" class="scThemeText">
+                                <mat-option *ngFor="let gender of prof.getGenderFormControls()" [value]="gender.value">
+                                    {{gender.displayName}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div class="termsContentWrapper">
+                    <mat-checkbox [formControlName]="FORM_CONTROL_AGREE_TO_TERMS" class="terms"
+                        *ngIf='showSpinner == false '>
+                        I agree
+                        to the terms of service
+                    </mat-checkbox>
+                    <div class="viewTerms scHoverText" (click)="openTerms()" *ngIf='showSpinner == false '>
+                        &nbsp;&nbsp;&nbsp;&nbsp;View Terms
+                    </div>
+                </div>
+            </mat-card-content>
+            <div class='buttonGroup'>
+                <button *ngIf="showSpinner == false" type="submit" mat-raised-button
+                    [disabled]="!registerForm.valid || !userAgreesToTerms()" class='buttonGroupButton'>
+                    <div class='buttonFlexManager' fxLayout="row">
+                        <div class='buttonIconWrapper'>
+                            <mat-icon>
+                                touch_app
+                            </mat-icon>
+                        </div>
+                        <div class='buttonTextWrapper'>
+                            &nbsp;&nbsp;LOGIN
+                        </div>
+                    </div>
+                </button>
+            </div>
+            <div class="errorMessage" *ngIf="showSpinner == false && hasErrorMessage()">{{errorMessage}}</div>
+        </mat-card>
+    </div>
+
+    <div class="waveWrapper waveAnimation" *ngIf="this.environmentService.isWeb">
+        <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle" style="background-image: url('./assets/homepage/wave-mid.png')">
+            </div>
+        </div>
+        <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom" style="background-image: url('./assets/homepage/wave-bot.png')">
+            </div>
+        </div>
+    </div>
+</form>
+
+<!-- Circles -->
+<div class="area">
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>

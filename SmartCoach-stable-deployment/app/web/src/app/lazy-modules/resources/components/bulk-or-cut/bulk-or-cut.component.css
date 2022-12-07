@@ -1,0 +1,48 @@
+.resourcesTitle {
+    border-color: var(--main-color) !important;
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: x-large;
+    max-width: 500px;
+    width: 80%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.subResourcesTitle {
+    text-decoration: underline;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    font-size: 1.8rem;
+    max-width: 500px;
+    width: 80%;
+    font-weight: bold;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.paragraph {
+    text-align: left;
+    margin-bottom: 20px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.scenarioTitle {
+    text-align: center;
+    line-height: 1.3;
+    font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.4rem;
+    padding-bottom: 10px;
+}

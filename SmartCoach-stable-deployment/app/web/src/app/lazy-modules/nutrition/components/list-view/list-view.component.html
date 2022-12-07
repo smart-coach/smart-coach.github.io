@@ -1,0 +1,63 @@
+<div class='bigWrapper'>
+  <div class="buttonWrapper">
+    <button mat-raised-button class="dreamyShadows quickAddButton halfButton"
+      (click)='openFinishLogDialog()' *ngIf="latestEntryIsIncomplete">
+      <mat-icon>check_circle_outline</mat-icon>&nbsp;&nbsp;FINISH {{observedLogPayload.latestDate | date: 'dd/MM'}}
+    </button>
+    <button mat-raised-button class="dreamyShadows quickAddButton halfButton"
+      (click)='openAutoPromptDialog()' *ngIf="latestEntryIsIncomplete">
+      <mat-icon>add_circle_outline</mat-icon>&nbsp;&nbsp;ADD {{getAutoPromptDate() | date: 'dd/MM'}}
+    </button>
+    <button id="shepherdStepNineteen" mat-raised-button class="dreamyShadows quickAddButton fullButton"
+      (click)='openAutoPromptDialog()' *ngIf="!latestEntryIsIncomplete">
+      <mat-icon>add_circle_outline</mat-icon>&nbsp;&nbsp;ADD {{getAutoPromptDate() | date: 'dd/MM'}}
+    </button>
+  </div>
+  <div class="formWrapper">
+    <form [formGroup]="listViewForm">
+      <table class="options">
+        <tr>
+          <td class='option scBackgroundColor'> Sort:</td>
+          <td>
+            <mat-select formControlName="sortMode" (selectionChange)="updateListView()">
+              <mat-option value="day">Day</mat-option>
+              <mat-option value="week" *ngIf="this.tierPermissionService.getUserTier().inDepthStats">Week</mat-option>
+              <mat-option value="week" *ngIf="!this.tierPermissionService.getUserTier().inDepthStats" [disabled]="true">
+                <mat-icon class="lock">lock</mat-icon>
+              </mat-option>
+            </mat-select>
+          </td>
+          <td class='option scBackgroundColor'> Order: </td>
+          <td>
+            <mat-select formControlName="orderMode" (selectionChange)="updateListView()">
+              <mat-option value="descending">Desc</mat-option>
+              <mat-option value="ascending" *ngIf="this.tierPermissionService.getUserTier().inDepthStats">Asc
+              </mat-option>
+              <mat-option value="week" *ngIf="!this.tierPermissionService.getUserTier().inDepthStats" [disabled]="true">
+                <mat-icon class="lock">lock</mat-icon>
+              </mat-option>
+            </mat-select>
+          </td>
+        </tr>
+      </table>
+    </form>
+  </div>
+  <div class="gridWrapper">
+    <smart-coach-spinner-wheel class='loadingSpinner' *ngIf='showSpinner' [noMessage]="true">
+    </smart-coach-spinner-wheel>
+    <span *ngIf='!showSpinner && sortByDay()'>
+      <div class='listOfGrids' *ngFor=" let timePeriod of listOfTimePeriods">
+        <app-list-view-grid [parentLog]='observedLog' [parentLogPayload]='this.observedLogPayload'
+          [timePeriod]='timePeriod' [sortByDay]="sortByDay() ">
+        </app-list-view-grid>
+      </div>
+    </span>
+    <div *ngIf='!showSpinner && !sortByDay()'>
+      <div class='listOfGrids' *ngFor=" let timePeriod of listOfTimePeriods">
+        <app-list-view-grid [parentLog]='observedLog' [parentLogPayload]='this.observedLogPayload'
+          [timePeriod]='timePeriod' [sortByDay]="sortByDay() ">
+        </app-list-view-grid>
+      </div>
+    </div>
+  </div>
+</div>

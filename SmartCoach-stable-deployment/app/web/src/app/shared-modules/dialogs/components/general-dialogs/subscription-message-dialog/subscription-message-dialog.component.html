@@ -1,0 +1,32 @@
+<div class="wrapper">
+  <div class='header'>
+    <div class='logTitle'>
+      <mat-icon class='scThemeText'>report_problem</mat-icon>
+      <div class='realTitle'>{{data.title}}</div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <div mat-dialog-content class="margin-top">
+    <p>{{data.message}}</p>
+    <p *ngIf="data.showContact">For more info, contact:
+      <a class='scThemeText scHoverText' href="mailto:smartcoachsupp@gmail.com">
+        smartcoachsupp@gmail.com
+      </a>
+    </p>
+  </div>
+  <div class="buttonGroup">
+
+    <app-checkout-button></app-checkout-button>
+
+    <button mat-button (click)="this.dialogRef.close()" class="greyButton buttonGroup buttonGroupButton">
+      <div class='buttonFlexManager' fxLayout="row">
+        <div class='buttonIconWrapper'>
+          <mat-icon>cancel_presentation</mat-icon>
+        </div>
+        <div class='buttonTextWrapper'>
+          &nbsp; CLOSE
+        </div>
+      </div>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<div class="wrapper">
+    <div class="sendToFront">
+        <mat-card class='mainContent'>
+            <ng-particles id="tsparticles-confetti" [options]="this.confettiService.particlesOptions" [particlesInit]="this.confettiService.particlesInit" (particlesLoaded)="this.confettiService.particlesLoaded($event)"></ng-particles>
+            <mat-card-header class='noMarginHeaderText'>
+                <mat-card-title>
+                    <h1>
+                        <mat-icon class='scThemeText'>card_giftcard</mat-icon>
+                        &nbsp;Premium
+                    </h1>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-divider></mat-divider>
+            <div class="algDescription">
+                <div class="greyText">
+                    <span class="thick">Thank you</span> for purchasing a SmartCoach™ subscription. Your account upgrade will take a <span class="thick">few seconds</span>. We are <span class="thick">thrilled</span> to have you join our community and assist you in optimizing your nutritional intake. <span class="thick">It's always a pleasure to hear about and see your journey with SmartCoach™. Therefore, feel free to share a photo with us.</span><span *ngIf="!this.environmentService.isWeb"> We would appreciate it if you could <span class="thick">leave us a review on the <span *ngIf="this.environmentService.isiOS">Apple App Store</span><span *ngIf="this.environmentService.isAndroid">Google Play Store.</span></span></span><span *ngIf="this.environmentService.isWeb"> We would appreciate it if you could <span class="thick">leave a review on the Apple App Store or Google Play Store.</span></span> We love to do more of what makes you happy and less of what makes you unhappy. Please stay in touch with us through our social media accounts below!
+                </div>
+                <button mat-raised-button class="scThemeButton goToDashButton" (click)="goToDash()">
+                    <mat-icon>dashboard</mat-icon> GO TO DASHBOARD
+                </button>
+                <div class="greyText emailWrapper">Questions? Contact: <span class="algEmail scThemeText">smartcoachsupp@gmail.com</span></div>
+            </div>
+        </mat-card>
+        <app-social-dashboard [owners]="['0000']"></app-social-dashboard>
+    </div>
+    <div class="waveWrapper waveAnimation" *ngIf="this.environmentService.isWeb">
+        <div class="waveWrapperInner bgMiddle">
+            <div class="wave waveMiddle" style="background-image: url('./assets/homepage/wave-mid.png')">
+            </div>
+        </div>
+        <div class="waveWrapperInner bgBottom">
+            <div class="wave waveBottom" style="background-image: url('./assets/homepage/wave-bot.png')">
+            </div>
+        </div>
+    </div>
+</div>

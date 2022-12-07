@@ -1,0 +1,14 @@
+<div class="wrapper">
+    <div class='header'>
+        <div class='logTitle'>
+            <mat-icon class='scThemeText'>{{this.data.matIcon}}</mat-icon>
+            <div class='realTitle'>{{this.data.operationName}}&nbsp;&nbsp;&nbsp;</div>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <br>
+    <div>
+        <smart-coach-spinner-wheel class="spinnerWrapper" [spinnerMessage]="this.data.spinnerMessage">
+        </smart-coach-spinner-wheel>
+    </div>
+</div>

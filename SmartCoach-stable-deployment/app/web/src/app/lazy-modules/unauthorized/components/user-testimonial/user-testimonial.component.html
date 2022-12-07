@@ -1,0 +1,47 @@
+<div class="appSpinnerWrapper" *ngIf='showSpinner'>
+    <smart-coach-spinner-wheel class='loadingSpinner'>
+    </smart-coach-spinner-wheel>
+</div>
+<div class="testimonials-container">
+    <div *ngIf="userTransformations">
+        <h2 class="heading-title stars">★★★★★</h2>
+        <h2 class="heading-title thick">Check out some of our transformations!</h2>
+        <swiper [loop]="true" [autoHeight]="true" [allowTouchMove]="true"
+            [autoplay]="{ delay: 1000, disableOnInteraction: true }" [pagination]="{ clickable: true }"
+            [navigation]="true">
+            <ng-template *ngFor="let transformation of userTransformations" data-swiper-autoplay="8000" swiperSlide>
+                <mat-card class="transformation-card">
+                    <mat-card-content>
+                        <img (load)="hideSpinner()" class="testimonial-image" src="{{transformation.imageUrl}}"
+                            alt="{{transformation.alt}}">
+                    </mat-card-content>
+                </mat-card>
+            </ng-template>
+        </swiper>
+    </div>
+    <div class="space-bottom" *ngIf="userTestimonials">
+        <h2 class="heading-title stars">★★★★★</h2>
+        <h2 class="heading-title thick">What people are saying about SmartCoach™</h2>
+        <swiper [loop]="true" [autoHeight]="true" [allowTouchMove]="true"
+            [autoplay]="{ delay: 8000, disableOnInteraction: true }" [pagination]="{ clickable: true }"
+            [navigation]="true">
+            <ng-template *ngFor="let testimonial of userTestimonials" data-swiper-autoplay="8000" swiperSlide>
+                <mat-card class="testimonial-card">
+                    <mat-card-header>
+                        <mat-card-title>
+                            <div class="header-content">
+                                <img src="{{testimonial.imageUrl}}" class="circle" mat-card-sm-image>
+                                <span [innerHTML]="testimonial.name" class="username"></span>
+                                <mat-card-subtitle [innerHTML]="testimonial.title"></mat-card-subtitle>
+                            </div>
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-divider></mat-divider>
+                    <mat-card-content>
+                        <div class="user-quote" [innerHTML]="testimonial.message"></div>
+                    </mat-card-content>
+                </mat-card>
+            </ng-template>
+        </swiper>
+    </div>
+</div>
