@@ -3415,6 +3415,7 @@ button:disabled,
 	-webkit-overflow-scrolling: touch;
 	background: #c0c0c0;
 	border-radius: 5px;
+	box-shadow: 10px 10px 20px #353849;
 	display: block;
 	max-width: 100%;
 	opacity: 0;
@@ -3469,7 +3470,7 @@ button:disabled,
 }
 
 #menu .links li a:hover {
-	background: #43dbbd;
+	background: #39bc9b;
 }
 
 @media screen and (max-width: 736px) {
@@ -3841,7 +3842,7 @@ body.is-preload .productMock {
 
 .wrapper.style2:before,
 .wrapper.style2:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 .wrapper.style3 {
@@ -3850,7 +3851,7 @@ body.is-preload .productMock {
 
 .wrapper.style3:before,
 .wrapper.style3:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 .wrapper.style4 {
@@ -3859,7 +3860,7 @@ body.is-preload .productMock {
 
 .wrapper.style4:before,
 .wrapper.style4:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 .wrapper.style5 {
@@ -3868,7 +3869,7 @@ body.is-preload .productMock {
 
 .wrapper.style5:before,
 .wrapper.style5:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 
@@ -3878,7 +3879,7 @@ body.is-preload .productMock {
 
 .wrapper.style6:before,
 .wrapper.style6:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 .wrapper.style6:after {
@@ -3887,7 +3888,7 @@ body.is-preload .productMock {
 
 .wrapper.spotlight:before,
 .wrapper.spotlight:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 .wrapper.spotlight .inner {
@@ -3935,13 +3936,13 @@ body.is-preload .productMock {
 
 .wrapper.spotlight.style2:before,
 .wrapper.spotlight.style2:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%233B896D%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2335a186%3B' /%3E%3C/svg%3E");
 }
 
 
 .wrapper.spotlight.style3:before,
 .wrapper.spotlight.style3:after {
-	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2343dbbd%3B' /%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cpolygon points='0,100 100,0 100,100' style='fill:%2339bc9b%3B' /%3E%3C/svg%3E");
 }
 
 .wrapper.spotlight.style4 {
@@ -4371,8 +4372,8 @@ body.is-preload .productMock {
 
 /* MY STYLES */
 .bannerLogo {
-	height: 250px;
-	width: 300px;
+	height: 500px;
+	width: 500px;
 }
 
 .logo {
@@ -4423,8 +4424,8 @@ body.is-preload .productMock {
 	text-align: center;
 	margin: 10px;
 	padding: 10px;
-	border-color: #43dbbd;
-	background-color: #43dbbd;
+	border-color: #39bc9b;
+	background-color: #39bc9b;
 	border-style: solid;
 	border-width: 2px;
 	border-radius: 5px;
@@ -4447,9 +4448,9 @@ body.is-preload .productMock {
 	flex-wrap: wrap;
 }
 
-.lsHoverBackground:hover {
-	background-color: #3B896D !important;
-	border-color: #3B896D !important;
+.scHoverBackground:hover {
+	background-color: #35a186 !important;
+	border-color: #35a186 !important;
 	cursor: pointer;
 }
 
@@ -4465,21 +4466,26 @@ body.is-preload .productMock {
 	cursor: auto;
 }
 
-.lsThemeText {
-	color: #43dbbd;
+.scThemeText {
+	color: #39bc9b;
 }
 
-.lsHoverText:hover {
-	color: #43dbbd !important;
+.scHoverText {
+	color: #39bc9b !important;
 	cursor: pointer;
 }
 
-.lsBackgroundColor {
-	background-color: #43dbbd !important;
+.scHoverText:hover {
+	color: #39bc9b !important;
+	cursor: pointer;
 }
 
-.lsDarkBackgroundColor {
-	background-color: #3B896D !important;
+.scBackgroundColor {
+	background-color: #39bc9b !important;
+}
+
+.scDarkBackgroundColor {
+	background-color: #35a186 !important;
 }
 
 .content p {
@@ -4494,7 +4500,7 @@ body.is-preload .productMock {
 	padding-left: 5px;
 	padding-right: 15px;
 	border-radius: 5px;
-	background-color: #43dbbd;
+	background-color: #39bc9b;
 	margin-bottom: 10px;
 }
 
@@ -4535,7 +4541,7 @@ body.is-preload .productMock {
 }
 
 .testimonial-footer {
-	background-color: #43dbbd;
+	background-color: #39bc9b;
 	color: #fff;
 	padding: 40px;
 	text-align: center;
@@ -4606,7 +4612,7 @@ body.is-preload .productMock {
 }
 
 .notHomePage #page-wrapper #header {
-	background-color: #43dbbd;
+	background-color: #39bc9b;
 }
 
 .notHomePage #header.alt h1 {
@@ -4641,4 +4647,9 @@ body.is-preload .productMock {
 body {
 	width: 100%;
 	overflow-x: hidden;
+}
+
+.responsive {
+	padding-right: 9%;
+	padding-left: 9%;
 }

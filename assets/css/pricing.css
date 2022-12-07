@@ -26,7 +26,7 @@
 }
 
 .pricing-plan {
-    border-bottom: 1px solid #43dbbd;
+    border-bottom: 1px solid #39bc9b;
     flex-basis: 20%;
     flex-grow: .45;
 }
@@ -38,7 +38,7 @@
 @media (min-width: 1100px) {
     .pricing-plan {
         border-bottom: none;
-        border-right: 1px solid #43dbbd;
+        border-right: 1px solid #39bc9b;
         padding: 10px;
     }
 
@@ -94,7 +94,7 @@
 }
 
 .pricing-features-item {
-    border-top: 1px solid #43dbbd;
+    border-top: 1px solid #39bc9b;
     font-size: 12px;
     line-height: 1.5;
     padding: 15px 0;
@@ -108,7 +108,7 @@
     border-bottom: none;
 }
 
-.pricing-plan .lsThemeText {
+.pricing-plan .scThemeText {
     display: block;
     font-size: 32px;
     font-weight: 700;

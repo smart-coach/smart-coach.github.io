@@ -1,7 +1,0 @@
-{
-  "projects": {
-    "testing": "ai-tdee-calculator",
-    "production": "smart-coach-prod"
-  },
-  "targets": {}
-}
